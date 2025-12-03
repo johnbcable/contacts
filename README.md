@@ -1,2 +1,2 @@
 # contacts
-Training app fro Ruby on Rails
+Training app for Ruby on Rails
