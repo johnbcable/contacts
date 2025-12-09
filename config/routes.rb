@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get "contacts/index"
+  # get "contacts/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  # get "up" => "rails/health#show", as: :rails_health_check
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  get '/dashboard', to: 'home#dashboard'
 
+  get '/dashboard', to: 'home#dashboard'
+=begin
   get 'contacts/new'
   get 'contacts', to: 'contacts#index'
   get 'contacts/:id/edit', to: 'contacts#edit', as: 'edit_contact'
@@ -22,5 +23,9 @@ Rails.application.routes.draw do
   post 'contacts', to: 'contacts#create'
   patch 'contacts/:id', to: 'contacts#update'
   delete 'contacts/:id', to: 'contacts#destroy'
+=end 
+
+# Standard RESTful routes generation
+resources :contacts 
 
 end

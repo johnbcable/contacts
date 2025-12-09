@@ -31,14 +31,31 @@ class ContactsController < ApplicationController
 
   # GET request to /contacts/:id/edit
   def edit
+    # finding a ontact by id from the database
+     @contact = Contact.find(params[:id])
   end
 
   # PATCH/PUT request to /contacts/:id
   def update
+    # finding a ontact by id from the database
+    @contact = Contact.find(params[:id])  
+      # Mass alignment of form fields into Contact object
+    # contact_params is a method defined below
+    if @contact.update(contact_params)
+      redirect_to @contact
+    else
+      render :edit
+    end
+  
   end
 
   # DELETE request to /contacts/:id
   def destroy
+    contact = Contact.find(params[:id])
+    # Destroying the contact from the database
+    contact.destroy
+
+    redirect_to contacts_path
   end
 
   def index 
